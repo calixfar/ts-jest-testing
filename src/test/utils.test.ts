@@ -22,6 +22,11 @@ describe('Utils test suite', () => {
       sut = new StringUtils()
     })
 
+    it('should throw error on invalid argument', () => {
+
+      expect(() => sut.toUpperCase('')).toThrow('Pass a valid string')
+    })
+
     it.each([
       { input: 'abc', expected: 'ABC' },
       { input: 'def', expected: 'DEF' },

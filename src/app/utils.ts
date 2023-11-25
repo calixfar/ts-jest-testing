@@ -1,4 +1,8 @@
 export function toUpperCase (arg: string) {
+  if (!arg) {
+    throw new Error('Pass a valid string')
+  }
+
   return arg.toUpperCase()
 }
 
