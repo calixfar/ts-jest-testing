@@ -1,6 +1,8 @@
+import { InvalidStringError } from "../errors/InvalidStringError"
+
 export function toUpperCase (arg: string) {
   if (!arg) {
-    throw new Error('Pass a valid string')
+    throw new InvalidStringError()
   }
 
   return arg.toUpperCase()

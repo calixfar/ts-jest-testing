@@ -1,4 +1,5 @@
 import { StringUtils, getStringInfo, toUpperCase } from "../app/utils"
+import { InvalidStringError } from "../errors/InvalidStringError"
 
 describe('Utils test suite', () => {
   it('should return uppercase', () => {
@@ -23,8 +24,17 @@ describe('Utils test suite', () => {
     })
 
     it('should throw error on invalid argument', () => {
-
       expect(() => sut.toUpperCase('')).toThrow('Pass a valid string')
+    })
+
+    it('should throw an error that is an instance of InvalidStringError', () => {
+      try {
+        sut.toUpperCase('')
+        fail('toUpperCase should fail on passing invalid argument')
+      } catch (error) {
+        expect(error).toBeInstanceOf(InvalidStringError)
+        expect(error).toHaveProperty('message', 'Pass a valid string')
+      }
     })
 
     it.each([
